@@ -5,5 +5,5 @@ package com.example.hellodaggerotto;
  */
 public interface MyServiceInterface {
 
-    public void ping();
+    public String ping();
 }
