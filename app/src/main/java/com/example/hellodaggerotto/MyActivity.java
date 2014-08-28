@@ -1,7 +1,5 @@
 package com.example.hellodaggerotto;
 
-import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.ComponentName;
 import android.content.Context;
@@ -14,13 +12,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.hellodaggerotto.base.BaseActivity;
+import com.squareup.otto.Bus;
+import com.squareup.otto.Subscribe;
 
-public class MyActivity extends Activity {
+import javax.inject.Inject;
 
+
+public class MyActivity extends BaseActivity {
+
+
+    @Inject
+    public static Bus bus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +39,17 @@ public class MyActivity extends Activity {
         }
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        bus.unregister(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        bus.register(this);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -53,6 +70,8 @@ public class MyActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+
+
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -61,6 +80,7 @@ public class MyActivity extends Activity {
 
         MyService mService;
         boolean mBound = false;
+        private TextView mTv;
 
         public PlaceholderFragment() {
         }
@@ -82,18 +102,34 @@ public class MyActivity extends Activity {
             }
         }
 
+        @Subscribe
+        public void pong(final PongRequest ping) {
+            bus.post(new PongRequest("hello pong"));
+            mTv.setText(ping.getMessage());
+        }
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_my, container, false);
 
             final TextView tv = (TextView) rootView.findViewById(R.id.textView);
+            mTv = (TextView) rootView.findViewById(R.id.textView2);
             Button btn = (Button) rootView.findViewById(R.id.button);
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if(mBound) {
                         tv.setText(mService.ping());
+                    }
+                    tv.setText("pong");
+                }
+            });
+            Button btn2 = (Button) rootView.findViewById(R.id.button2);
+            btn2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mBound) {
+                        bus.post(new PingRequest());
                     }
                 }
             });
