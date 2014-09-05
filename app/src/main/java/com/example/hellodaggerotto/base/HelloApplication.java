@@ -13,13 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.hellodaggerotto;
+package com.example.hellodaggerotto.base;
 
 import android.app.Application;
 
-import com.example.hellodaggerotto.base.ActivityModule;
-import com.example.hellodaggerotto.base.AndroidModule;
-import com.example.hellodaggerotto.base.BusModule;
+import com.example.hellodaggerotto.bus.BusModule;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,24 +25,23 @@ import java.util.List;
 import dagger.ObjectGraph;
 
 public class HelloApplication extends Application {
-  private ObjectGraph graph;
+    private ObjectGraph graph;
 
-  @Override
-  public void onCreate() {
-    super.onCreate();
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        graph = ObjectGraph.create(getModules().toArray());
+    }
 
-    graph = ObjectGraph.create(getModules().toArray());
-  }
+    protected List<Object> getModules() {
+        return Arrays.asList(
+                new AndroidModule(this),
+                new BusModule()
+        );
+    }
 
-  protected List<Object> getModules() {
-    return Arrays.asList(
-            new AndroidModule(this),
-            new ActivityModule(),
-            new BusModule()
-    );
-  }
+    public void inject(Object object) {
+        graph.inject(object);
+    }
 
-  public void inject(Object object) {
-    graph.inject(object);
-  }
 }

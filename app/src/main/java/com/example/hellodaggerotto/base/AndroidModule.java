@@ -18,8 +18,6 @@ package com.example.hellodaggerotto.base;
 import android.content.Context;
 import android.location.LocationManager;
 
-import com.example.hellodaggerotto.HelloApplication;
-
 import javax.inject.Singleton;
 
 import dagger.Module;

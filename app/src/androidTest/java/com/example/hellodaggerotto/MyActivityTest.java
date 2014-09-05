@@ -1,16 +1,12 @@
 package com.example.hellodaggerotto;
 
 import android.app.Instrumentation;
-import android.content.ComponentName;
-import android.content.ContextWrapper;
-import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.example.hellodaggerotto.ui.MyActivity;
 
 
 public class MyActivityTest extends ActivityInstrumentationTestCase2<MyActivity> {
@@ -53,7 +49,7 @@ public class MyActivityTest extends ActivityInstrumentationTestCase2<MyActivity>
 //            @Override
 //            public ComponentName startService(Intent service) {
 //                Log.v("mockcontext", "Start service: " + service.toUri(0));
-//                if (service.getComponent().getClassName().equals ("com.example.hellodaggerotto.MyService"))
+//                if (service.getComponent().getClassName().equals ("com.example.hellodaggerotto.network.MyService"))
 //                    serviceStarted.set(true);
 //                return service.getComponent();
 //            }

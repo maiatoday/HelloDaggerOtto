@@ -6,6 +6,8 @@ import android.test.ServiceTestCase;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.test.suitebuilder.annotation.SmallTest;
 
+import com.example.hellodaggerotto.network.MyService;
+
 public class MyServiceTest extends ServiceTestCase<MyService> {
 
 

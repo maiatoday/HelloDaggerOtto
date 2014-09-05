@@ -13,10 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.hellodaggerotto.base;
+package com.example.hellodaggerotto.bus;
 
-import com.example.hellodaggerotto.MyActivity;
+import com.example.hellodaggerotto.network.MyService;
+import com.example.hellodaggerotto.ui.MyActivity;
+import com.example.hellodaggerotto.ui.MyFragment;
 import com.squareup.otto.Bus;
+import com.squareup.otto.ThreadEnforcer;
 
 import javax.inject.Singleton;
 
@@ -24,13 +27,11 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module(
-    injects = Bus.class,
-    complete = false,
-    library = true
+    injects = {MyService.class, MyActivity.class, MyFragment.class}
 )
 public class BusModule {
     @Provides @Singleton
     Bus provideBus() {
-        return new Bus();
+        return new Bus(ThreadEnforcer.MAIN);
     }
 }

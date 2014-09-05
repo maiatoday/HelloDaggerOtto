@@ -1,8 +1,8 @@
-package com.example.hellodaggerotto.base;
+package com.example.hellodaggerotto.network;
 
 import android.app.Service;
 
-import com.example.hellodaggerotto.HelloApplication;
+import com.example.hellodaggerotto.base.HelloApplication;
 
 /**
  * Created by maia on 2014/08/28.

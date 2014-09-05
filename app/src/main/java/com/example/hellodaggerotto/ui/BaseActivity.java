@@ -1,9 +1,9 @@
-package com.example.hellodaggerotto.base;
+package com.example.hellodaggerotto.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.example.hellodaggerotto.HelloApplication;
+import com.example.hellodaggerotto.base.HelloApplication;
 
 /**
  * Created by maia on 2014/08/28.

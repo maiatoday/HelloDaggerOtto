@@ -1,11 +1,12 @@
-package com.example.hellodaggerotto;
+package com.example.hellodaggerotto.network;
 
 
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 
-import com.example.hellodaggerotto.base.BaseService;
+import com.example.hellodaggerotto.bus.PingRequest;
+import com.example.hellodaggerotto.bus.PongRequest;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
@@ -16,7 +17,7 @@ import javax.inject.Inject;
 /**
  * Created by maia on 2014/08/24.
  */
-public class MyService extends BaseService implements MyServiceInterface {
+public class MyService extends BaseService {
     // Binder given to clients
     private final IBinder mBinder = new MyBinder();
     // Random number generator
@@ -41,7 +42,7 @@ public class MyService extends BaseService implements MyServiceInterface {
      * runs in the same process as its clients, we don't need to deal with IPC.
      */
     public class MyBinder extends Binder {
-        MyService getService() {
+        public MyService getService() {
             // Return this instance of LocalService so clients can call public methods
             return MyService.this;
         }
@@ -52,14 +53,14 @@ public class MyService extends BaseService implements MyServiceInterface {
         return mBinder;
     }
 
-    @Override
-    public String ping() {
+
+    public String ping_old() {
 
         return "pong!" + mGenerator.nextInt(100);
     }
 
     @Subscribe
-    public void ping2(final PingRequest ping) {
-        bus.post(new PongRequest("hello pong"));
+    public void ping(final PingRequest ping) {
+        bus.post(new PongRequest("hello pong"+ mGenerator.nextInt(100)));
     }
 }
