@@ -47,22 +47,15 @@ public class MyFragment extends BaseFragment {
     public void pong(final PongRequest pong) {
         mTv.setText(pong.getMessage());
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_my, container, false);
 
-        final TextView tv = (TextView) rootView.findViewById(R.id.textView);
-        mTv = (TextView) rootView.findViewById(R.id.textView2);
+        mTv = (TextView) rootView.findViewById(R.id.textView);
         Button btn = (Button) rootView.findViewById(R.id.button);
         btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tv.setText("pong");
-            }
-        });
-        Button btn2 = (Button) rootView.findViewById(R.id.button2);
-        btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bus.post(new PingRequest());
