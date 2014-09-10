@@ -3,6 +3,7 @@ package com.example.hellodaggerotto;
 import android.app.Instrumentation;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
+import android.test.suitebuilder.annotation.Suppress;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ public class MyActivityTest extends ActivityInstrumentationTestCase2<MyActivity>
         mActivity = getActivity();
     }
 
+    @Suppress
     public void testPreconditions() {
         assertNotNull(mInstrumentation);
         assertNotNull(mActivity);
@@ -39,10 +41,10 @@ public class MyActivityTest extends ActivityInstrumentationTestCase2<MyActivity>
         assertNotNull(mButton);
         assertNotNull(mText);
         TouchUtils.clickView(this, mButton);
-        String expectedText = "pong";
-
-
+        String expectedTextStart = "pong";
+        assertTrue(mText.getText().toString().startsWith(expectedTextStart));
     }
+
 //    public void testStartServiceOnInit () {
 //        final AtomicBoolean serviceStarted = new AtomicBoolean(false);
 //        setActivityContext(new ContextWrapper(getInstrumentation().getTargetContext()) {
