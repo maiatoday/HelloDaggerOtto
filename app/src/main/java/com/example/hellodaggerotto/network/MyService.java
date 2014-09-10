@@ -18,6 +18,7 @@ import javax.inject.Inject;
  * Created by maia on 2014/08/24.
  */
 public class MyService extends BaseService {
+    //Some test stuff to show local branching and merging
     // Binder given to clients
     private final IBinder mBinder = new MyBinder();
     // Random number generator
