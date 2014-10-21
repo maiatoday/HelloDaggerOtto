@@ -44,4 +44,8 @@ public class HelloApplication extends Application {
         graph.inject(object);
     }
 
+    public void addModule(Object module) {
+        graph.plus(module);
+    }
+
 }

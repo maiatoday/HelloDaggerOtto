@@ -1,30 +1,22 @@
 package com.example.hellodaggerotto.ui;
 
-import android.app.Fragment;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
-import com.example.hellodaggerotto.bus.PingRequest;
-import com.example.hellodaggerotto.bus.PongRequest;
 import com.example.hellodaggerotto.R;
 import com.example.hellodaggerotto.network.MyService;
 import com.squareup.otto.Bus;
-import com.squareup.otto.Subscribe;
 
 import javax.inject.Inject;
 
 
+/* the first comment  to test cherry picking */
 public class MyActivity extends BaseActivity {
 
 
