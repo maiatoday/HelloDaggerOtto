@@ -20,6 +20,8 @@ import javax.inject.Inject;
 
 /* second comment to test cherry picking */
 
+/* 3rd comment */
+
 public class MyActivity extends BaseActivity {
 
 
