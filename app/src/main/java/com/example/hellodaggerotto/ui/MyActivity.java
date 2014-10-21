@@ -47,6 +47,8 @@ public class MyActivity extends BaseActivity {
         bus.unregister(this);
     }
 
+    /* a fifth comment */
+
     @Override
     public void onResume() {
         super.onResume();
