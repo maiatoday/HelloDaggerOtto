@@ -39,6 +39,7 @@ public class MyActivity extends BaseActivity {
                     .commit();
         }
     }
+    /* another comment for 4th commit */
 
     @Override
     public void onPause() {
