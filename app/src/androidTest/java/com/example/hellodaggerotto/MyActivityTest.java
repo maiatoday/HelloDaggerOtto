@@ -3,10 +3,11 @@ package com.example.hellodaggerotto;
 import android.app.Instrumentation;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
-import android.test.suitebuilder.annotation.Suppress;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.hellodaggerotto.base.HelloApplication;
+import com.example.hellodaggerotto.bus.MockBusModule;
 import com.example.hellodaggerotto.ui.MyActivity;
 
 
@@ -23,15 +24,15 @@ public class MyActivityTest extends ActivityInstrumentationTestCase2<MyActivity>
 
     public void setUp() throws Exception {
         super.setUp();
-        mInstrumentation = getInstrumentation();
         mActivity = getActivity();
+        HelloApplication app = (HelloApplication) mActivity.getApplication();
+        app.addModule(new MockBusModule());
+        mInstrumentation = getInstrumentation();
     }
 
-    @Suppress
     public void testPreconditions() {
         assertNotNull(mInstrumentation);
         assertNotNull(mActivity);
-
     }
 
     public void testButtonClick() {

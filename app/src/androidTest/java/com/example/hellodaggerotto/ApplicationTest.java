@@ -1,6 +1,5 @@
 package com.example.hellodaggerotto;
 
-import android.app.Application;
 import android.test.ApplicationTestCase;
 
 import com.example.hellodaggerotto.base.HelloApplication;
