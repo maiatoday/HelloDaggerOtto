@@ -17,6 +17,9 @@ import javax.inject.Inject;
 
 
 /* the first comment  to test cherry picking */
+
+/* second comment to test cherry picking */
+
 public class MyActivity extends BaseActivity {
 
 
